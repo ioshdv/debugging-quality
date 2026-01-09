@@ -9,9 +9,11 @@ function getDiscount(price, isVip) {
   if (typeof price !== 'number' || Number.isNaN(price) || price < 0) {
     return 0;
   }
-  if (isVip) {
+
+  if (isVip && price >= 100) {
     return price * 0.1;
   }
+
   return 0;
 }
 
