@@ -1,17 +1,17 @@
 function isAdult(age) {
-  if (typeof age !== 'number' || Number.isNaN(age)) {
-    return false;
-  }
-  return age >= 18;
+  return Number.isFinite(age) && age >= 18;
 }
 
 function getDiscount(price, isVip) {
-  if (typeof price !== 'number' || Number.isNaN(price) || price < 0) {
+  if (!Number.isFinite(price) || price < 0) {
     return 0;
   }
 
-  if (isVip && price >= 100) {
-    return price * 0.1;
+  const MIN_PRICE_FOR_VIP_DISCOUNT = 100;
+  const VIP_DISCOUNT_RATE = 0.1;
+
+  if (isVip && price >= MIN_PRICE_FOR_VIP_DISCOUNT) {
+    return price * VIP_DISCOUNT_RATE;
   }
 
   return 0;
